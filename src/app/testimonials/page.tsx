@@ -78,6 +78,123 @@ export default function Testimonials() {
 
   return (
     <>
+      <title>Patient Success Stories & Reviews | Muscle Algorithm Clinic Jaipur</title>
+      <meta name="description" content="Read reviews, case logs, and success stories from patients who recovered from joint pain, back pain, and sports injuries at Muscle Algorithm Clinic in Mansarovar, Jaipur." />
+      <link rel="canonical" href="https://musclealgorithm.in/testimonials" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="Patient Success Stories & Reviews | Muscle Algorithm Clinic Jaipur" />
+      <meta property="og:description" content="Read reviews, case logs, and success stories from patients who recovered from joint pain, back pain, and sports injuries at Muscle Algorithm Clinic in Mansarovar, Jaipur." />
+      <meta property="og:url" content="https://musclealgorithm.in/testimonials" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Patient Success Stories & Reviews | Muscle Algorithm Clinic Jaipur" />
+      <meta name="twitter:description" content="Read reviews, case logs, and success stories from patients who recovered from joint pain, back pain, and sports injuries at Muscle Algorithm Clinic in Mansarovar, Jaipur." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://musclealgorithm.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Testimonials",
+                "item": "https://musclealgorithm.in/testimonials"
+              }
+            ]
+          })
+        }}
+      />
+
+      {/* Medical Clinic and Reviews JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalClinic",
+            "name": "Muscle Algorithm Clinic",
+            "image": "https://musclealgorithm.in/logo.png",
+            "@id": "https://musclealgorithm.in/#clinic",
+            "url": "https://musclealgorithm.in",
+            "telephone": "+919257350214",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Naruka Mansion, Plot No. 4, New Sanganer Rd, near HDFC Bank, opp. Rajat Path, Ganpatpura, Mansarovar",
+              "addressLocality": "Jaipur",
+              "addressRegion": "Rajasthan",
+              "postalCode": "302020",
+              "addressCountry": "IN"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "127",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": "Akash Meena"
+                },
+                "datePublished": "2026-06-03",
+                "reviewBody": "Dr. Sinha is extremely knowledgeable. My shoulder impingement was cured in just 4 sessions. The focus on posture and muscle activation maps is incredible.",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                }
+              },
+              {
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": "Nisha Shekhawat"
+                },
+                "datePublished": "2026-05-17",
+                "reviewBody": "Joining the FIT90 program was the best decision. I lost 7.5kg and my constant cervical neck strain is completely gone. Love the dietician alignment sheets.",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                }
+              },
+              {
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": "Dr. Alok Vyas"
+                },
+                "datePublished": "2026-03-17",
+                "reviewBody": "Highly recommended clinical physiotherapy clinic. They don't just use machines; their exercise algorithm build sheets focus on permanent muscle patterns.",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                }
+              }
+            ]
+          })
+        }}
+      />
+
       <Navbar />
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950">
         
@@ -85,7 +202,7 @@ export default function Testimonials() {
         <div className="text-center space-y-3 mb-16 max-w-xl mx-auto">
           <span className="text-xs font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest block">Client Proof Log</span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Patient Stories & Reviews
+            Patient Success Stories & Physiotherapy Reviews
           </h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm">
             Read verified transformations and feedback from patient profiles treated at Muscle Algorithm Clinic.
@@ -103,7 +220,7 @@ export default function Testimonials() {
         {/* 2. VIDEO TESTIMONIAL CAROUSEL/GRID */}
         <section className="max-w-6xl mx-auto mb-24 space-y-8">
           <div className="border-b border-slate-200 dark:border-slate-800 pb-4">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Video Patient Profiles</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Video Patient Rehabilitation Profiles</h2>
             <p className="text-xs text-slate-400 mt-1">Detailed patient updates on their rehabilitation processes.</p>
           </div>
 
@@ -154,7 +271,7 @@ export default function Testimonials() {
         {/* 3. WRITTEN REVIEWS GRID */}
         <section className="max-w-5xl mx-auto mb-24 space-y-8">
           <div className="border-b border-slate-200 dark:border-slate-800 pb-4">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Written Patient Logs</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Verified Google Reviews & Patient Recovery Logs</h2>
             <p className="text-xs text-slate-400 mt-1">Verified reviews pulled from our Google Reviews listing.</p>
           </div>
 
@@ -199,7 +316,7 @@ export default function Testimonials() {
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-center space-y-6">
             <div className="space-y-1">
               <span className="text-xs font-mono font-bold text-yellow-500 uppercase tracking-widest block">Google review booster</span>
-              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">Help Us Scale the Muscle Algorithm</h3>
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">Help Us Scale the Muscle Algorithm Clinic</h3>
               <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto font-medium">
                 Cured or recovered at our clinic? Let us know how your experience was. Your feedback helps our clinical index reach more patients.
               </p>

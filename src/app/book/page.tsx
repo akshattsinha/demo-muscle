@@ -12,28 +12,82 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Book() {
   const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [mobile, setMobile] = useState("+91 ");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("Male");
   const [healthConcern, setHealthConcern] = useState("");
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showReviewBooster, setShowReviewBooster] = useState(false);
   const [rating, setRating] = useState<number | null>(null);
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !mobile) {
-      alert("Please fill in Name and Mobile Number.");
+  const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    const prefix = "+91 ";
+    
+    // Lock value to prefix if user attempts to backspace/delete the prefix "+91 "
+    if (value.length < prefix.length) {
+      setMobile(prefix);
       return;
     }
-    // Form is ready for future integration: can POST to API or redirect to external calendar
-    setIsSubmitted(true);
-    // After a short delay, show the Google Review Booster
-    setTimeout(() => {
-      setShowReviewBooster(true);
-    }, 1500);
+    
+    // Extract only the digits that come after "+91 "
+    const rawInput = value.slice(prefix.length);
+    const digitsOnly = rawInput.replace(/\D/g, "").slice(0, 10); // Keep max 10 digits
+    
+    // Format: add a space after the first 5 digits
+    let formatted = prefix;
+    if (digitsOnly.length > 5) {
+      formatted += digitsOnly.slice(0, 5) + " " + digitsOnly.slice(5);
+    } else {
+      formatted += digitsOnly;
+    }
+    
+    setMobile(formatted);
+  };
+
+  const handleBookingSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name) {
+      alert("Please enter the Patient Full Name.");
+      return;
+    }
+
+    const digitsOnly = mobile.replace("+91", "").replace(/\D/g, "");
+    if (digitsOnly.length !== 10) {
+      alert("Mobile number must have exactly 10 digits after +91.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      // Build the URL with query parameters (highly reliable for Google Apps Script Web Apps)
+      const url = new URL("https://script.google.com/macros/s/AKfycbx-_8kmnPeGQkHd25jL_AHOkvd8oL-gq54xf8ZwpvJmXj_Fc2y16Ql5FZuvfLwQvm8oVw/exec");
+      url.searchParams.append("name", name);
+      url.searchParams.append("mobile", mobile);
+      url.searchParams.append("email", email || "");
+      url.searchParams.append("age", age || "N/A");
+      url.searchParams.append("gender", gender);
+      url.searchParams.append("healthConcern", healthConcern || "N/A");
+
+      await fetch(url.toString(), {
+        method: "POST",
+        mode: "no-cors",
+      });
+
+      // Data is sent; show the submission success screen
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setShowReviewBooster(true);
+      }, 1500);
+    } catch (error) {
+      console.error("Submission failed:", error);
+      alert("Something went wrong. Please check your internet connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleRatingSubmit = (stars: number) => {
@@ -46,6 +100,47 @@ export default function Book() {
 
   return (
     <>
+      <title>Book Online Physiotherapy Consultation & Appointment | Jaipur</title>
+      <meta name="description" content="Secure your initial clinical physiotherapy consultation in Mansarovar, Jaipur, or book a home visit session. Easy online slot booking." />
+      <link rel="canonical" href="https://musclealgorithm.in/book" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="Book Online Physiotherapy Consultation & Appointment | Jaipur" />
+      <meta property="og:description" content="Secure your initial clinical physiotherapy consultation in Mansarovar, Jaipur, or book a home visit session. Easy online slot booking." />
+      <meta property="og:url" content="https://musclealgorithm.in/book" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Book Online Physiotherapy Consultation & Appointment | Jaipur" />
+      <meta name="twitter:description" content="Secure your initial clinical physiotherapy consultation in Mansarovar, Jaipur, or book a home visit session. Easy online slot booking." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://musclealgorithm.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Book Consultation",
+                "item": "https://musclealgorithm.in/book"
+              }
+            ]
+          })
+        }}
+      />
       <Navbar />
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950">
         
@@ -96,9 +191,9 @@ export default function Book() {
                           type="tel"
                           required
                           value={mobile}
-                          onChange={(e) => setMobile(e.target.value)}
-                          placeholder="e.g. +91 98765 43210"
-                          className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 text-slate-900 dark:text-white"
+                          onChange={handleMobileChange}
+                          placeholder=""
+                          className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 text-slate-900 dark:text-white font-mono"
                         />
                       </div>
                     </div>
@@ -153,16 +248,14 @@ export default function Book() {
 
 
                   {/* Submission */}
-                  <div className="pt-4 border-t border-slate-150 dark:border-slate-800 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-400">
-                      *Supports calendar redirects & custom webhooks.
-                    </span>
+                  <div className="pt-4 border-t border-slate-150 dark:border-slate-800 flex justify-end">
                     <button
                       type="submit"
-                      className="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-emerald-500/10 flex items-center space-x-2"
+                      disabled={isSubmitting}
+                      className="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-450 disabled:cursor-not-allowed text-white font-extrabold text-sm rounded-xl shadow-lg shadow-emerald-500/10 flex items-center space-x-2 transition-all"
                     >
-                      <span>Secure Consultation</span>
-                      <ArrowRight className="h-4 w-4" />
+                      <span>{isSubmitting ? "Saving slot..." : "Secure Consultation"}</span>
+                      {!isSubmitting && <ArrowRight className="h-4 w-4" />}
                     </button>
                   </div>
                 </form>

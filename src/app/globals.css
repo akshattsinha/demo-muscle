@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+@theme {
+  --color-slate-50: #faf7f2;
+  --color-slate-100: #f3ece2;
+  --color-slate-200: #eae0d3;
+  --color-slate-300: #dbccbc;
+  --color-slate-400: #bfaea0;
+  --color-slate-500: #a18e7e;
+  --color-slate-600: #857262;
+  --color-slate-700: #695748;
+  --color-slate-800: #4c3f33;
+  --color-slate-900: #2d251f;
+  --color-slate-950: #1b1511;
+
+  --color-emerald-50: #faf6f0;
+  --color-emerald-100: #f5eadd;
+  --color-emerald-200: #ebd8c2;
+  --color-emerald-300: #dcc2a3;
+  --color-emerald-400: #caa781;
+  --color-emerald-500: #b58d63;
+  --color-emerald-600: #9e754b;
+  --color-emerald-700: #825e3b;
+  --color-emerald-800: #66472b;
+  --color-emerald-900: #4d331d;
+  --color-emerald-950: #291a0e;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer utilities {
@@ -40,16 +66,16 @@
 
 :root {
   color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #faf7f2;
+  --foreground: #2d251f;
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --border: #e2e8f0;
+  --card-foreground: #2d251f;
+  --border: #eae0d3;
   
-  --primary: #0f172a;
-  --secondary: #2563eb;
-  --accent-green: #10b981;
-  --accent-lime: #84cc16;
+  --primary: #2d251f;
+  --secondary: #825e3b;
+  --accent-green: #b58d63;
+  --accent-lime: #caa781;
 }
 
 

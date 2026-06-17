@@ -24,7 +24,8 @@ import {
   Activity, 
   ShieldCheck, 
   X, 
-  Star 
+  Star,
+  MapPin
 } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -45,6 +46,95 @@ export default function Home() {
 
   return (
     <>
+      <title>Best Physiotherapy Clinic in Mansarovar, Jaipur | Muscle Algorithm Clinic</title>
+      <meta name="description" content="Expert physiotherapy, pain rehabilitation, chiropractic adjustment, posture correction, clinical nutrition, and fitness coaching in Mansarovar, Jaipur." />
+      <link rel="canonical" href="https://musclealgorithm.in" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="Best Physiotherapy Clinic in Mansarovar, Jaipur | Muscle Algorithm Clinic" />
+      <meta property="og:description" content="Expert physiotherapy, pain rehabilitation, chiropractic adjustment, posture correction, clinical nutrition, and fitness coaching in Mansarovar, Jaipur." />
+      <meta property="og:url" content="https://musclealgorithm.in" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Best Physiotherapy Clinic in Mansarovar, Jaipur | Muscle Algorithm Clinic" />
+      <meta name="twitter:description" content="Expert physiotherapy, pain rehabilitation, chiropractic adjustment, posture correction, clinical nutrition, and fitness coaching in Mansarovar, Jaipur." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalClinic",
+            "name": "Muscle Algorithm Clinic",
+            "alternateName": "Muscle Algorithm Physiotherapy & Rehabilitation Clinic",
+            "image": "https://musclealgorithm.in/logo.png",
+            "logo": "https://musclealgorithm.in/logo.png",
+            "@id": "https://musclealgorithm.in/#clinic",
+            "url": "https://musclealgorithm.in",
+            "telephone": "+91 92573 50214",
+            "priceRange": "$$",
+            "address": [
+              {
+                "@type": "PostalAddress",
+                "streetAddress": "Naruka Mansion, Plot No. 4, New Sanganer Rd, near HDFC Bank, opp. Rajat Path, Ganpatpura, Mansarovar",
+                "addressLocality": "Jaipur",
+                "addressRegion": "Rajasthan",
+                "postalCode": "302020",
+                "addressCountry": "IN"
+              },
+              {
+                "@type": "PostalAddress",
+                "streetAddress": "Plot No. 5, Sumer Nagar, Sunder Nagar Scheme, near Iskon Temple Road, Muhana Mandi Road",
+                "addressLocality": "Jaipur",
+                "addressRegion": "Rajasthan",
+                "postalCode": "302020",
+                "addressCountry": "IN"
+              }
+            ],
+            "geo": [
+              {
+                "@type": "GeoCoordinates",
+                "latitude": 26.8523,
+                "longitude": 75.7516
+              }
+            ],
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "08:00",
+                "closes": "20:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "09:00",
+                "closes": "13:00"
+              }
+            ],
+            "sameAs": [
+              "https://facebook.com",
+              "https://instagram.com",
+              "https://youtube.com"
+            ],
+            "department": [
+              {
+                "@type": "MedicalSpecialty",
+                "name": "Physiotherapy & Physical Rehabilitation"
+              },
+              {
+                "@type": "MedicalSpecialty",
+                "name": "Clinical Nutrition & Dietetics"
+              }
+            ]
+          })
+        }}
+      />
       <Navbar />
       
       <main className="flex-grow">
@@ -57,7 +147,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Column: Headline & Action Items */}
-              <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <div className="order-2 lg:order-1 lg:col-span-7 space-y-6 text-center lg:text-left">
                 {/* Review Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
@@ -67,9 +157,7 @@ export default function Home() {
                 >
                   <Star className="h-4 w-4 fill-emerald-500 stroke-none" />
                   <span>5.0 ★ Rated (180+ Google Reviews)</span>
-                </motion.div>
-
-                {/* Primary Headline */}
+                </motion.div>                {/* Primary Headline */}
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -80,8 +168,9 @@ export default function Home() {
                   <span className="bg-gradient-to-r from-blue-600 via-emerald-500 to-lime-500 bg-clip-text text-transparent">
                     Pain Into Performance
                   </span>
+                  <span className="sr-only"> - Best Physiotherapy Clinic in Mansarovar, Jaipur</span>
                 </motion.h1>
-
+ 
                 {/* Subheadline */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -89,7 +178,7 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed"
                 >
-                  Expert Physiotherapy, Rehabilitation, Nutrition Guidance, and Fitness Coaching Under One Roof. We decode physical health with biomechanical algorithms.
+                  Expert Physiotherapy, Rehabilitation, Nutrition Guidance, and Fitness Coaching Under One Roof in Mansarovar, Jaipur. We decode physical health with biomechanical algorithms.
                 </motion.p>
 
                 {/* CTA Action Deck */}
@@ -141,26 +230,27 @@ export default function Home() {
               </div>
 
               {/* Right Column: Hero Visual Graphic */}
-              <div className="lg:col-span-5 flex justify-center">
+              <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
-                  className="relative h-[320px] w-[320px] md:h-[400px] md:w-[400px] bg-gradient-to-tr from-blue-600/10 to-emerald-500/10 dark:from-blue-600/20 dark:to-emerald-500/25 border border-slate-200 dark:border-slate-850 rounded-full flex items-center justify-center shadow-2xl"
+                  className="relative h-[320px] w-[320px] md:h-[400px] md:w-[400px] flex items-center justify-center"
                 >
                   {/* Orbit rings */}
-                  <div className="absolute inset-4 rounded-full border border-dashed border-slate-300 dark:border-slate-800 animate-spin [animation-duration:120s]" />
-                  <div className="absolute inset-12 rounded-full border border-emerald-500/10 animate-spin [animation-duration:60s]" />
+                  <div className="absolute inset-0 rounded-full border border-dashed border-slate-300 dark:border-slate-800 animate-spin [animation-duration:120s]" />
+                  <div className="absolute inset-8 rounded-full border border-emerald-500/10 animate-spin [animation-duration:60s]" />
 
-                  {/* Core Vector Logo Icon */}
-                  <div className="p-8 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl shadow-2xl z-10 flex flex-col items-center space-y-4">
-                    <div className="p-4 bg-gradient-to-tr from-blue-600 to-emerald-500 text-white rounded-2xl shadow-xl shadow-emerald-500/20">
-                      <Activity className="h-10 w-10 animate-pulse" />
-                    </div>
-                    <div className="text-center">
-                      <h3 className="font-extrabold text-sm text-slate-900 dark:text-white tracking-tight font-mono">MUSCLE ALGORITHM</h3>
-                      <p className="text-[10px] text-emerald-500 font-bold uppercase tracking-wider mt-0.5">Biomechanical Precision</p>
-                    </div>
+                  {/* Background Circle */}
+                  <div className="absolute inset-6 bg-gradient-to-tr from-blue-600/10 to-emerald-500/10 dark:from-blue-600/20 dark:to-emerald-500/25 border border-slate-200 dark:border-slate-850 rounded-full shadow-2xl" />
+
+                  {/* Core Doctor Image */}
+                  <div className="relative w-full h-full flex items-end justify-center z-10 overflow-visible">
+                    <img 
+                      src="/dr_akshat.png" 
+                      alt="Dr. Akshat Sinha" 
+                      className="h-[140%] w-auto object-contain drop-shadow-2xl select-none" 
+                    />
                   </div>
                 </motion.div>
               </div>
@@ -184,7 +274,7 @@ export default function Home() {
             <div className="text-center space-y-3 mb-16">
               <span className="text-xs font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest">Scientific Frameworks</span>
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                Our Rehabilitation Specialties
+                Our Rehabilitation Specialties in Jaipur
               </h2>
               <p className="text-slate-500 dark:text-slate-400 font-medium max-w-xl mx-auto text-sm sm:text-base">
                 Explore clinical modules mapped to dynamic recovery paths, tailored to cure joints and scale human performance.
@@ -247,7 +337,7 @@ export default function Home() {
                 Anatomical Pain Index
               </h2>
               <p className="text-slate-500 dark:text-slate-400 font-medium max-w-xl mx-auto text-sm sm:text-base">
-                Click highlighted nodes on the model scanner below to explore common joint deficits and targeted treatment roadmaps.
+                Click highlighted nodes on the model scanner below to explore common joint deficits and targeted treatment roadmaps in Jaipur.
               </p>
             </div>
 
@@ -264,7 +354,7 @@ export default function Home() {
                 Algorithmic Transformations
               </h2>
               <p className="text-slate-500 dark:text-slate-400 font-medium max-w-xl mx-auto text-sm sm:text-base">
-                Drag the interactive comparison slider to witness skeletal corrections, spinal realignments, and body recomposition shifts.
+                Drag the interactive comparison slider to witness skeletal corrections, spinal realignments, and body recomposition shifts at our Mansarovar clinic.
               </p>
             </div>
 
@@ -281,7 +371,7 @@ export default function Home() {
                 Biometric Intake Analyzer
               </h2>
               <p className="text-slate-500 dark:text-slate-400 font-medium max-w-xl mx-auto text-sm sm:text-base">
-                Measure your body mass indices and metabolic caloric baselines to isolate load parameters.
+                Measure your body mass indices and metabolic caloric baselines to isolate load parameters for weight loss programs in Jaipur.
               </p>
             </div>
 
@@ -289,82 +379,155 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 8. CONTACT & LOCATION SECTION */}
-        <section className="py-24 bg-white dark:bg-slate-900">
+        {/* 8. OUR BRANCHES SECTION */}
+        <section className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              {/* Left Column: Contact details */}
-              <div className="lg:col-span-5 space-y-8">
-                <div className="space-y-3">
-                  <span className="text-xs font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest">Reach Our Facility</span>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                    Visit Our Clinic
-                  </h2>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-                    Centrally located in Mansarovar, Jaipur. Drop in or call us directly to talk with our team.
-                  </p>
-                </div>
+            <div className="text-center space-y-3 mb-16">
+              <span className="text-xs font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest">Reach Our Facilities</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                Our Clinic Branches
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 font-medium max-w-xl mx-auto text-sm sm:text-base">
+                We now offer scientific biomechanical treatments across two locations in Jaipur. Choose the branch nearest to you.
+              </p>
+            </div>
 
-                <div className="space-y-4">
-                  {/* Address Card */}
-                  <div className="p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl flex items-start space-x-3.5">
-                    <Activity className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wide">Clinic Address</h4>
-                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mt-1">
-                        {clinicConfig.address}
-                      </p>
-                      <a 
-                        href={clinicConfig.googleMapsLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-bold text-emerald-500 hover:underline flex items-center gap-0.5 mt-2"
-                      >
-                        <span>Open in Google Maps</span>
-                        <ChevronRight className="h-3 w-3" />
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Hotlines */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl">
-                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wide">Phone Hotline</h4>
-                      <a href={`tel:${clinicConfig.phoneRaw}`} className="text-sm font-extrabold text-slate-900 dark:text-white block mt-1 hover:text-emerald-500">
-                        {clinicConfig.phone}
-                      </a>
-                    </div>
-                    <div className="p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl">
-                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wide">WhatsApp Desk</h4>
-                      <a href={clinicConfig.whatsappLink("general")} target="_blank" rel="noopener noreferrer" className="text-sm font-extrabold text-slate-900 dark:text-white block mt-1 hover:text-emerald-500">
-                        Chat Online
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <Link href="/book" className="w-full">
-                    <button className="w-full py-4 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white dark:text-slate-950 font-extrabold text-sm rounded-2xl shadow-xl flex items-center justify-center space-x-2">
-                      <Calendar className="h-4.5 w-4.5" />
-                      <span>Book Initial consultation</span>
-                    </button>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Column: Google Maps Embed Frame */}
-              <div className="lg:col-span-7">
-                <div className="relative aspect-[16/10] w-full border border-slate-250 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Branch 1: Mansarovar Main Clinic */}
+              <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col space-y-6">
+                {/* Media Toggle View */}
+                <div className="relative aspect-[16/10] w-full border border-slate-250 dark:border-slate-800 rounded-2xl overflow-hidden shadow-md bg-slate-100 dark:bg-slate-900">
                   <iframe
-                    src={clinicConfig.googleMapsEmbed}
+                    src={clinicConfig.branches[0].googleMapsEmbed}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen={true}
                     loading="lazy"
-                    title="Google Maps Location for Muscle Algorithm Clinic"
+                    title="Google Maps Location for Mansarovar Main Clinic"
                   />
+                </div>
+
+                {/* Details */}
+                <div className="space-y-5 flex-grow flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest">Branch 1 • Main Clinic</span>
+                      <span className="text-[11px] font-mono font-bold text-yellow-600 bg-yellow-500/10 px-2.5 py-0.5 rounded-full">5.0 ★ Rated</span>
+                    </div>
+                    <h3 className="text-xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                      {clinicConfig.branches[0].name}
+                    </h3>
+                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 flex items-start gap-2 leading-relaxed">
+                      <MapPin className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                      <a
+                        href={clinicConfig.branches[0].googleMapsLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-emerald-500 transition-colors"
+                      >
+                        {clinicConfig.branches[0].address}
+                      </a>
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 space-y-4">
+                    {/* Action Hotlines */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <a
+                        href={`tel:${clinicConfig.branches[0].phoneRaw}`}
+                        className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-center text-xs font-extrabold text-slate-850 dark:text-slate-200 flex items-center justify-center gap-1.5 hover:border-emerald-500 hover:text-emerald-500 transition-all"
+                      >
+                        <Phone className="h-4 w-4 text-emerald-500 shrink-0" />
+                        <span>Call Branch</span>
+                      </a>
+                      <a
+                        href={clinicConfig.whatsappLink("general")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-center text-xs font-extrabold text-slate-850 dark:text-slate-200 flex items-center justify-center gap-1.5 hover:border-emerald-500 hover:text-emerald-500 transition-all"
+                      >
+                        <MessageCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
+
+                    <Link href="/book" className="block w-full">
+                      <button className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white dark:text-slate-950 font-extrabold text-xs rounded-xl shadow-md flex items-center justify-center space-x-1.5 transition-all">
+                        <Calendar className="h-4 w-4" />
+                        <span>Book Mansarovar Slot</span>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Branch 2: Devenia Multispeciality Clinic */}
+              <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col space-y-6">
+                {/* Media Toggle View */}
+                <div className="relative aspect-[16/10] w-full border border-slate-250 dark:border-slate-800 rounded-2xl overflow-hidden shadow-md bg-slate-100 dark:bg-slate-900">
+                  <iframe
+                    src={clinicConfig.branches[1].googleMapsEmbed}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    title="Google Maps Location for Devenia Multispeciality Clinic"
+                  />
+                </div>
+
+                {/* Details */}
+                <div className="space-y-5 flex-grow flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest">Branch 2 • Expansion</span>
+                      <span className="text-[11px] font-mono font-bold text-emerald-600 bg-emerald-500/10 px-2.5 py-0.5 rounded-full font-mono">New Branch</span>
+                    </div>
+                    <h3 className="text-xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                      {clinicConfig.branches[1].name}
+                    </h3>
+                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 flex items-start gap-2 leading-relaxed">
+                      <MapPin className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                      <a
+                        href={clinicConfig.branches[1].googleMapsLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-emerald-500 transition-colors"
+                      >
+                        {clinicConfig.branches[1].address}
+                      </a>
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 space-y-4">
+                    {/* Action Hotlines */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <a
+                        href={`tel:${clinicConfig.branches[1].phoneRaw}`}
+                        className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-center text-xs font-extrabold text-slate-850 dark:text-slate-200 flex items-center justify-center gap-1.5 hover:border-emerald-500 hover:text-emerald-500 transition-all"
+                      >
+                        <Phone className="h-4 w-4 text-emerald-500 shrink-0" />
+                        <span>Call Branch</span>
+                      </a>
+                      <a
+                        href={clinicConfig.whatsappLink("general")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-center text-xs font-extrabold text-slate-850 dark:text-slate-200 flex items-center justify-center gap-1.5 hover:border-emerald-500 hover:text-emerald-500 transition-all"
+                      >
+                        <MessageCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
+
+                    <Link href="/book" className="block w-full">
+                      <button className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white dark:text-slate-950 font-extrabold text-xs rounded-xl shadow-md flex items-center justify-center space-x-1.5 transition-all">
+                        <Calendar className="h-4 w-4" />
+                        <span>Book Sumer Nagar Slot</span>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

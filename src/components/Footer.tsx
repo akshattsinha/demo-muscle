@@ -5,17 +5,21 @@ import { Phone, MapPin, Clock, Activity } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-100 text-slate-600 border-t border-slate-200 pt-16 pb-12 transition-colors duration-300">
+    <footer className="bg-slate-100 text-slate-600 border-t border-slate-200 pt-16 pb-28 md:pb-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Info */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="p-2 bg-emerald-500 text-white rounded-lg">
-                <Activity className="h-6 w-6" />
+            <Link href="/" className="flex items-center space-x-2 group">
+              <div className="p-1 bg-white border border-slate-200 rounded-lg shadow-sm mix-blend-multiply flex items-center justify-center">
+                <img 
+                  src="/logo.png" 
+                  alt="Muscle Algorithm Icon" 
+                  className="h-10 w-10 object-contain" 
+                />
               </div>
               <span className="font-bold text-xl tracking-tight text-slate-900">
-                Muscle Algorithm <span className="text-emerald-600 font-mono">Clinic</span>
+                Muscle Algorithm <span className="text-emerald-650 font-mono">Clinic</span>
               </span>
             </Link>
             <p className="text-sm text-slate-500 leading-relaxed">
@@ -112,16 +116,35 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-slate-900 font-bold text-base mb-6 tracking-wide">Contact Us</h3>
             <ul className="space-y-4 text-sm font-medium text-slate-500">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
-                <a
-                  href={clinicConfig.googleMapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-emerald-600 transition-colors leading-snug"
-                >
-                  {clinicConfig.address}
-                </a>
+              <li className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <MapPin className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-xs font-bold text-slate-800 uppercase block">Mansarovar Main Clinic</span>
+                    <a
+                      href={clinicConfig.branches[0].googleMapsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-emerald-600 text-xs transition-colors leading-snug block mt-1"
+                    >
+                      {clinicConfig.branches[0].address}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <MapPin className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-xs font-bold text-slate-800 uppercase block">Devenia Multispeciality Clinic</span>
+                    <a
+                      href={clinicConfig.branches[1].googleMapsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-emerald-600 text-xs transition-colors leading-snug block mt-1"
+                    >
+                      {clinicConfig.branches[1].address}
+                    </a>
+                  </div>
+                </div>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-emerald-600 shrink-0" />
@@ -149,7 +172,6 @@ export default function Footer() {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy" className="hover:text-slate-500">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-slate-500">Terms of Service</Link>
-            <Link href="/qr" className="hover:text-slate-650 text-emerald-600 font-semibold">QR Check-In Board</Link>
           </div>
         </div>
       </div>

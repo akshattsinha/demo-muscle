@@ -66,7 +66,10 @@ export default function FloatingActions() {
       </div>
 
       {/* 2. Sticky WhatsApp, Call Now & Book Appointment Button Bar for Mobile Devices */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-lg border-t border-slate-200/50 dark:border-slate-800/50 shadow-2xl px-4 py-3 pb-safe-bottom flex items-center gap-2">
+      <div 
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 dark:bg-slate-950/90 backdrop-blur-lg border-t border-slate-200/50 dark:border-slate-800/50 shadow-2xl px-4 py-3 flex items-center gap-2"
+        style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
+      >
         {/* WhatsApp Icon Button */}
         <a
           href={clinicConfig.whatsappLink("consultation")}
@@ -75,23 +78,23 @@ export default function FloatingActions() {
           className="flex items-center justify-center p-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl border border-emerald-400/20 shadow-lg shadow-emerald-500/20 transition-all duration-200 shrink-0"
           aria-label="Chat on WhatsApp"
         >
-          <MessageCircle className="h-5 w-5 fill-white text-emerald-550 shrink-0" />
+          <MessageCircle className="h-5 w-5 fill-white text-emerald-500 shrink-0" />
         </a>
 
         {/* Call Now Button */}
         <a
           href={`tel:${clinicConfig.phoneRaw}`}
-          className="flex-1 flex items-center justify-center gap-1.5 py-3.5 px-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-xl text-xs sm:text-sm border border-slate-200 dark:border-slate-800 transition-colors duration-200"
+          className="flex-1 flex items-center justify-center gap-1.5 py-3.5 px-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-xl text-xs sm:text-sm border border-slate-200 dark:border-slate-800 transition-colors duration-200 whitespace-nowrap"
         >
-          <Phone className="h-4 w-4 text-emerald-500 fill-emerald-500" />
+          <Phone className="h-4 w-4 text-emerald-500 fill-emerald-500 shrink-0" />
           <span>Call Now</span>
         </a>
 
         {/* Book Now Button */}
-        <Link href="/book" className="flex-[1.5]">
-          <button className="w-full flex items-center justify-center gap-1.5 py-3.5 px-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition-all duration-200">
-            <Calendar className="h-4 w-4" />
-            <span>Book Appointment</span>
+        <Link href="/book" className="flex-1 flex">
+          <button className="w-full flex items-center justify-center gap-1.5 py-3.5 px-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition-all duration-200 whitespace-nowrap">
+            <Calendar className="h-4 w-4 shrink-0" />
+            <span>Book Now</span>
           </button>
         </Link>
       </div>

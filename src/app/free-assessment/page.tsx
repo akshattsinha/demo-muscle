@@ -80,6 +80,47 @@ export default function FreeAssessment() {
 
   return (
     <>
+      <title>Free Online Health & Pain Assessment | Jaipur | Muscle Algorithm Clinic</title>
+      <meta name="description" content="Identify joint deficits, postural issues, and movement limitations using our biomechanical self-assessment tool. Get customized health reports." />
+      <link rel="canonical" href="https://musclealgorithm.in/free-assessment" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="Free Online Health & Pain Assessment | Jaipur | Muscle Algorithm Clinic" />
+      <meta property="og:description" content="Identify joint deficits, postural issues, and movement limitations using our biomechanical self-assessment tool. Get customized health reports." />
+      <meta property="og:url" content="https://musclealgorithm.in/free-assessment" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Free Online Health & Pain Assessment | Jaipur | Muscle Algorithm Clinic" />
+      <meta name="twitter:description" content="Identify joint deficits, postural issues, and movement limitations using our biomechanical self-assessment tool. Get customized health reports." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://musclealgorithm.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Free Assessment",
+                "item": "https://musclealgorithm.in/free-assessment"
+              }
+            ]
+          })
+        }}
+      />
       <Navbar />
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950">
         

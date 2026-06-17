@@ -31,16 +31,32 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
+          <Link 
+            href="/" 
+            className="flex items-center space-x-2 group"
+            onClick={(e) => {
+              e.preventDefault();
+              if (pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                window.history.pushState(null, "", "/");
+              } else {
+                window.location.href = "/";
+              }
+            }}
+          >
             <motion.div
               whileHover={{ rotate: 18, scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="p-2 bg-emerald-500 text-white rounded-lg shadow-lg shadow-emerald-500/20"
+              className="p-1 bg-white border border-slate-200 rounded-lg shadow-sm mix-blend-multiply flex items-center justify-center"
             >
-              <Activity className="h-6 w-6" />
+              <img 
+                src="/logo.png" 
+                alt="Muscle Algorithm Icon" 
+                className="h-10 w-10 object-contain" 
+              />
             </motion.div>
-            <span className="font-bold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-blue-600 transition-all duration-300">
-              Muscle Algorithm <span className="text-emerald-500 font-extrabold font-mono">Clinic</span>
+            <span className="font-bold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent group-hover:from-emerald-600 group-hover:to-emerald-750 transition-all duration-300">
+              Muscle Algorithm <span className="text-emerald-600 font-extrabold font-mono">Clinic</span>
             </span>
           </Link>
 

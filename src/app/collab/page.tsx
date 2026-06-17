@@ -12,23 +12,118 @@ export default function Collab() {
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("+91 ");
   const [collabType, setCollabType] = useState("Corporate Wellness");
   const [message, setMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    const prefix = "+91 ";
+    
+    // Lock value to prefix if user attempts to backspace/delete the prefix "+91 "
+    if (value.length < prefix.length) {
+      setPhone(prefix);
+      return;
+    }
+    
+    // Extract only the digits that come after "+91 "
+    const rawInput = value.slice(prefix.length);
+    const digitsOnly = rawInput.replace(/\D/g, "").slice(0, 10); // Keep max 10 digits
+    
+    // Format: add a space after the first 5 digits
+    let formatted = prefix;
+    if (digitsOnly.length > 5) {
+      formatted += digitsOnly.slice(0, 5) + " " + digitsOnly.slice(5);
+    } else {
+      formatted += digitsOnly;
+    }
+    
+    setPhone(formatted);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !org) {
       alert("Please enter Name, Organization, and Email.");
       return;
     }
-    // Ready for Google Forms action hook: e.g. post to entry.xxxx parameters or redirect to prefilled link.
-    setIsSubmitted(true);
+
+    const digitsOnly = phone.replace("+91", "").replace(/\D/g, "");
+    if (digitsOnly.length !== 10 && digitsOnly.length !== 0) {
+      alert("Phone number must have exactly 10 digits after +91.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      // Build the URL with query parameters (highly reliable for Google Apps Script Web Apps)
+      const url = new URL("https://script.google.com/macros/s/AKfycbyPn8D8fKz89-xO_bEOG0hKQvZvskqPrgKuWFojz0rZwffbNtn2tc8bY3By5fzPezDFgA/exec");
+      url.searchParams.append("name", name);
+      url.searchParams.append("org", org);
+      url.searchParams.append("email", email);
+      url.searchParams.append("phone", phone.replace("+91 ", "").length > 0 ? phone : "N/A");
+      url.searchParams.append("collabType", collabType);
+      url.searchParams.append("message", message || "N/A");
+
+      await fetch(url.toString(), {
+        method: "POST",
+        mode: "no-cors",
+      });
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Submission failed:", error);
+      alert("Something went wrong. Please check your internet connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <>
+      <title>Partner & Collaborate | Muscle Algorithm Clinic Jaipur</title>
+      <meta name="description" content="Establish synergistic clinical pathways. Partner with us for corporate wellness, gym affiliations, and medical referral networks in Jaipur." />
+      <link rel="canonical" href="https://musclealgorithm.in/collab" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="Partner & Collaborate | Muscle Algorithm Clinic Jaipur" />
+      <meta property="og:description" content="Establish synergistic clinical pathways. Partner with us for corporate wellness, gym affiliations, and medical referral networks in Jaipur." />
+      <meta property="og:url" content="https://musclealgorithm.in/collab" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Partner & Collaborate | Muscle Algorithm Clinic Jaipur" />
+      <meta name="twitter:description" content="Establish synergistic clinical pathways. Partner with us for corporate wellness, gym affiliations, and medical referral networks in Jaipur." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://musclealgorithm.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Collaborate",
+                "item": "https://musclealgorithm.in/collab"
+              }
+            ]
+          })
+        }}
+      />
       <Navbar />
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950">
         
@@ -94,9 +189,9 @@ export default function Collab() {
                       <input
                         type="tel"
                         value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+91 98765 43210"
-                        className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 text-slate-900 dark:text-white"
+                        onChange={handlePhoneChange}
+                        placeholder=""
+                        className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 text-slate-900 dark:text-white font-mono"
                       />
                     </div>
                   </div>
@@ -127,16 +222,14 @@ export default function Collab() {
                     />
                   </div>
 
-                  <div className="pt-4 border-t border-slate-150 dark:border-slate-800 flex items-center justify-between">
-                    <span className="text-xs text-slate-400 font-medium">
-                      *Supports custom Google Forms links.
-                    </span>
+                  <div className="pt-4 border-t border-slate-150 dark:border-slate-800 flex justify-end">
                     <button
                       type="submit"
-                      className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white dark:text-slate-950 font-extrabold text-sm rounded-xl shadow-lg flex items-center space-x-1.5"
+                      disabled={isSubmitting}
+                      className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-500 dark:hover:bg-emerald-600 disabled:bg-slate-450 disabled:cursor-not-allowed text-white dark:text-slate-950 font-extrabold text-sm rounded-xl shadow-lg flex items-center space-x-1.5 transition-all"
                     >
-                      <span>Apply for Collaboration</span>
-                      <ArrowRight className="h-4 w-4" />
+                      <span>{isSubmitting ? "Submitting request..." : "Apply for Collaboration"}</span>
+                      {!isSubmitting && <ArrowRight className="h-4 w-4" />}
                     </button>
                   </div>
                 </form>

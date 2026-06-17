@@ -14,6 +14,7 @@ type CategoryFilter = "all" | "physiotherapy" | "nutrition" | "fitness";
 export default function Education() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const categories = [
     { id: "all", label: "All Content" },
@@ -32,6 +33,67 @@ export default function Education() {
 
   return (
     <>
+      <title>Physiotherapy & Fitness Education Center | Jaipur | Muscle Algorithm Clinic</title>
+      <meta name="description" content="Learn scientific movement corrections, dry needling, posture alignment drills, and clinical rehabilitation guidelines from top physiotherapists in Mansarovar, Jaipur." />
+      <link rel="canonical" href="https://musclealgorithm.in/education" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="Physiotherapy & Fitness Education Center | Jaipur | Muscle Algorithm Clinic" />
+      <meta property="og:description" content="Learn scientific movement corrections, dry needling, posture alignment drills, and clinical rehabilitation guidelines from top physiotherapists in Mansarovar, Jaipur." />
+      <meta property="og:url" content="https://musclealgorithm.in/education" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Physiotherapy & Fitness Education Center | Jaipur | Muscle Algorithm Clinic" />
+      <meta name="twitter:description" content="Learn scientific movement corrections, dry needling, posture alignment drills, and clinical rehabilitation guidelines from top physiotherapists in Mansarovar, Jaipur." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What causes muscle imbalances and joint dysfunction?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Muscle imbalances typically result from prolonged static postures, improper load distribution during gym training, or previous unhealed minor injuries. This throws off joint alignment and biomechanics."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How often should I practice corrective stretches?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For postural alignment (like hunchback or anterior pelvic tilt), consistency is key. We recommend executing corrective mobilization drills at least once daily or during work breaks."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is dry needling, and how does it help recovery?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dry needling is a clinical technique where thin needles are inserted into muscular trigger points. This releases tight myofascial bands, resets neural feedback loop parameters, and increases blood circulation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I apply ice or heat to my back pain?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For acute injuries (less than 48 hours old) with swelling, ice is recommended. For chronic stiff joints or tight muscles (like general low back ache), moist heat is preferred to increase tissue elasticity."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <Navbar />
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950">
         
@@ -151,6 +213,59 @@ export default function Education() {
             )}
           </AnimatePresence>
         </div>
+
+        {/* FAQ SECTION */}
+        <section className="py-24 bg-slate-50 border-t border-slate-200 mt-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-3 mb-16">
+              <span className="text-xs font-mono font-bold text-emerald-500 uppercase tracking-widest">Get Informed</span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
+                Clinical Physiotherapy & Rehab FAQs
+              </h2>
+              <p className="text-slate-500 font-medium text-sm sm:text-base">
+                Learn about physical wellness, alignment recovery, and tissue rehab science in Jaipur.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "What causes muscle imbalances and joint dysfunction?",
+                  a: "Muscle imbalances typically result from prolonged static postures, improper load distribution during gym training, or previous unhealed minor injuries. This throws off joint alignment and biomechanics."
+                },
+                {
+                  q: "How often should I practice corrective stretches?",
+                  a: "For postural alignment (like hunchback or anterior pelvic tilt), consistency is key. We recommend executing corrective mobilization drills at least once daily or during work breaks."
+                },
+                {
+                  q: "What is dry needling, and how does it help recovery?",
+                  a: "Dry needling is a clinical technique where thin needles are inserted into muscular trigger points. This releases tight myofascial bands, resets neural feedback loop parameters, and increases blood circulation."
+                },
+                {
+                  q: "Should I apply ice or heat to my back pain?",
+                  a: "For acute injuries (less than 48 hours old) with swelling, ice is recommended. For chronic stiff joints or tight muscles (like general low back ache), moist heat is preferred to increase tissue elasticity."
+                }
+              ].map((faq, idx) => (
+                <div key={idx} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    className="w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <span className="text-emerald-500 text-xl font-mono shrink-0 ml-4">
+                      {openFaq === idx ? "−" : "+"}
+                    </span>
+                  </button>
+                  {openFaq === idx && (
+                    <div className="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/50">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
       </main>
       <AIChatbot />

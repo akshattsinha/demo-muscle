@@ -7,6 +7,28 @@ export const clinicConfig = {
   address: "Naruka Mansion, Plot No. 4, New Sanganer Rd, near HDFC Bank, opp. Rajat Path, Ganpatpura, Mansarovar, Jaipur, Rajasthan 302020",
   googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Muscle+Algorithm+Clinic+Mansarovar+Jaipur",
   googleMapsEmbed: "https://maps.google.com/maps?q=Muscle%20Algorithm%20Clinic,%20New%20Sanganer%20Rd,%20Mansarovar,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  branches: [
+    {
+      id: "mansarovar",
+      name: "Mansarovar Main Clinic",
+      address: "Naruka Mansion, Plot No. 4, New Sanganer Rd, near HDFC Bank, opp. Rajat Path, Ganpatpura, Mansarovar, Jaipur, Rajasthan 302020",
+      phone: "+91 92573 50214",
+      phoneRaw: "+919257350214",
+      googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Muscle+Algorithm+Clinic+Mansarovar+Jaipur",
+      googleMapsEmbed: "https://maps.google.com/maps?q=Muscle%20Algorithm%20Clinic,%20New%20Sanganer%20Rd,%2520Mansarovar,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed",
+      photo: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      id: "devenia",
+      name: "Devenia Multispeciality Clinic",
+      address: "Plot No. 5, Sumer Nagar, Sunder Nagar Scheme, near Iskon Temple Road, Muhana Mandi Road, Jaipur, Rajasthan 302020",
+      phone: "+91 92573 50214",
+      phoneRaw: "+919257350214",
+      googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Devenia+Diagnostic+%26+Clinic+Sunder+Nagar+Jaipur",
+      googleMapsEmbed: "https://maps.google.com/maps?q=Devenia%20Diagnostic%20%26%20Clinic%20Sunder%20Nagar%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed",
+      photo: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=800"
+    }
+  ],
   businessHours: [
     { days: "Monday - Saturday", hours: "8:00 AM - 8:00 PM" },
     { days: "Sunday", hours: "9:00 AM - 1:00 PM" }
@@ -37,31 +59,31 @@ export const clinicConfig = {
   services: [
     {
       id: "home-visit",
-      title: "Home Visit Physio",
+      title: "Home Visit Physiotherapy",
       icon: "Home",
-      description: "Get professional, clinical-grade physiotherapy treatment in the safety and comfort of your home. Perfect for post-surgery rehab, elderly care, and acute pain management.",
-      details: "Our licensed physiotherapists bring advanced therapeutic equipment right to your home, performing complete examinations and customized recovery protocols without the stress of travel."
+      description: "Get professional, clinical-grade physiotherapy treatment in the safety and comfort of your home. Perfect for post-surgery rehab, elderly care, and acute back or knee pain management in Jaipur.",
+      details: "Our licensed physiotherapists bring advanced therapeutic equipment right to your home in Mansarovar & Jaipur. We perform complete physical examinations and customized recovery protocols without travel stress."
     },
     {
       id: "site-rehab",
-      title: "Physio Rehabilitation (On Site)",
+      title: "Sports Rehabilitation & Physio (On Site)",
       icon: "Building",
-      description: "State-of-the-art clinic facilities equipped for advanced orthopedic, sports, neurological rehabilitation, and chiropractic adjustments.",
-      details: "Utilizing advanced diagnostic software, electrotherapy, laser treatment, manual therapy, and target exercise modules to correct alignment and cure pain permanently."
+      description: "State-of-the-art clinic facilities in Jaipur equipped for advanced orthopedic, sports injury recovery, neurological rehabilitation, and chiropractic adjustments.",
+      details: "Led by the best physiotherapists in Mansarovar, utilizing biomechanical diagnostic software, manual therapy, and target exercise modules to correct posture and cure chronic neck/back pain permanently."
     },
     {
       id: "online-consult",
-      title: "Online Consultation",
+      title: "Online Physiotherapy Consultation",
       icon: "Video",
-      description: "Interactive virtual video consultations offering personalized movement screen checks, pain analysis, self-massage drills, and exercise progression.",
-      details: "Convenient global care for busy schedules. Includes digital PDF recovery roadmaps and regular WhatsApp video follow-ups."
+      description: "Interactive virtual video consultations offering personalized movement screens, digital pain analysis, self-massage drills, and progressive home exercises.",
+      details: "Convenient global care by the best physiotherapists in Jaipur. Ideal for busy schedules, featuring PDF recovery roadmaps and regular tracking on WhatsApp."
     },
     {
       id: "nutrition",
-      title: "Nutritional Guidance",
+      title: "Clinical Nutritionist & Dietetics",
       icon: "Apple",
-      description: "Science-backed nutrition plans aligned with clinical conditions (diabetes, thyroid, PCOS), weight-management targets, and muscle gain algorithms.",
-      details: "Continuous weekly feedback, caloric trackers, non-restrictive diet sheets tailored to individual regional choices, and performance fueling algorithms."
+      description: "Science-backed clinical nutrition plans aligned with health conditions (diabetes, thyroid, PCOS), weight loss programs, and performance fueling algorithms in Jaipur.",
+      details: "Personalized by expert clinical nutritionists and fitness coaches in Jaipur. Includes weekly checkups, metabolic caloric baselines, and tailored diet charts mapped to regional choices."
     }
   ],
   educationReels: [

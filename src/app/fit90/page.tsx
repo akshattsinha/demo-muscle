@@ -26,6 +26,7 @@ export default function Fit90() {
   const [targetWeight, setTargetWeight] = useState<number | "">(75); // kg
   const [currentWeek, setCurrentWeek] = useState(6); // current week tracked (1-12)
   const [activeTab, setActiveTab] = useState<"workout" | "nutrition" | "monitoring">("workout");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Calculate simulated current weight based on week slider with fallback defaults when input is empty
   const activeStartingWeight = startingWeight === "" ? 85 : startingWeight;
@@ -41,12 +42,7 @@ export default function Fit90() {
     { title: "Weekly Progress Monitoring", desc: "Direct video checks, body composition reviews, and tracking updates." },
   ];
 
-  const weeksOutline = [
-    { week: "Weeks 1-3", phase: "Joint Stabilization & Aerobic Base", focus: "Restoring active range of motion, activating stabilizing muscle chains, structural integrity check." },
-    { week: "Weeks 4-6", phase: "Caloric Optimization & Hypertrophy", focus: "Initiating caloric deficit algorithms, strength capacity loading, metabolic rate boosting." },
-    { week: "Weeks 7-9", phase: "Functional Strength & Posture", focus: "Adding chiropractic core adjustments, functional resistance drills, posture correction." },
-    { week: "Weeks 10-12", phase: "Metabolic Rebound & Stabilization", focus: "High-intensity athletic grids, cementing posture corrections, diet transition planning." },
-  ];
+
 
   // Generate SVG coordinates for weight loss line graph
   const getGraphPoints = () => {
@@ -72,6 +68,67 @@ export default function Fit90() {
 
   return (
     <>
+      <title>FIT90: Best Weight Loss & Fitness Program in Jaipur | Muscle Algorithm Clinic</title>
+      <meta name="description" content="Transform your body and joint health in 90 days. Get customized workout matrices, clinical nutrition planning, and weekly posture corrections in Jaipur." />
+      <link rel="canonical" href="https://musclealgorithm.in/fit90" />
+      
+      {/* Open Graph Tags */}
+      <meta property="og:title" content="FIT90: Best Weight Loss & Fitness Program in Jaipur | Muscle Algorithm Clinic" />
+      <meta property="og:description" content="Transform your body and joint health in 90 days. Get customized workout matrices, clinical nutrition planning, and weekly posture corrections in Jaipur." />
+      <meta property="og:url" content="https://musclealgorithm.in/fit90" />
+      <meta property="og:image" content="https://musclealgorithm.in/logo.png" />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="FIT90: Best Weight Loss & Fitness Program in Jaipur | Muscle Algorithm Clinic" />
+      <meta name="twitter:description" content="Transform your body and joint health in 90 days. Get customized workout matrices, clinical nutrition planning, and weekly posture corrections in Jaipur." />
+      <meta name="twitter:image" content="https://musclealgorithm.in/logo.png" />
+
+      {/* Structured FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How does the FIT90 program protect my joints during weight loss?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Unlike generic gym programs, FIT95 integrates clinical physiotherapy screening. Before loading any exercise pattern, our therapists check your muscle activation to ensure your spine, knees, and shoulders are safe."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Will I get a customized diet plan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, our clinical nutritionists design customized diet charts based on your daily lifestyle, regional preferences, and metabolic markers. We manage clinical conditions like diabetes, thyroid, and PCOS."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What support is included in the ₹4,999 package?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The package includes your initial biomechanical movement screening, weekly diet chart adjustments, target workout schedules, progress check-ins, and direct support on WhatsApp."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to go to a specific gym?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, the FIT90 workout matrix can be tailored for home training with basic equipment or any local gym in Jaipur."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <Navbar />
       
       <main className="flex-grow bg-slate-50 text-slate-900 transition-colors duration-300">
@@ -358,37 +415,7 @@ export default function Fit90() {
           </div>
         </section>
 
-        {/* WEEK-BY-WEEK MONITORING OUTLINE */}
-        <section className="py-24 max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center space-y-3 mb-16">
-            <span className="text-xs font-mono font-bold text-emerald-500 uppercase tracking-widest">Structured Phases</span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
-              Week-By-Week Roadmap
-            </h2>
-          </div>
 
-          <div className="relative border-l border-slate-200 ml-4 md:ml-32 space-y-12">
-            {weeksOutline.map((item, idx) => (
-              <div key={idx} className="relative pl-6 md:pl-8 group">
-                {/* Timeline dot */}
-                <div className="absolute -left-3 top-1.5 h-6 w-6 rounded-full bg-white border-2 border-emerald-500 group-hover:bg-emerald-500 transition-colors flex items-center justify-center">
-                  <div className="h-2 w-2 bg-emerald-500 group-hover:bg-white rounded-full" />
-                </div>
-                {/* Week tag on the left for md/desktop screen sizes */}
-                <div className="hidden md:block absolute -left-36 top-1 text-right w-24">
-                  <span className="text-sm font-bold font-mono text-emerald-650 block">{item.week}</span>
-                  <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-wide">Phase {idx+1}</span>
-                </div>
-                <div className="space-y-1 max-w-2xl bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
-                  {/* Mobile-only week tag */}
-                  <span className="md:hidden text-xs font-bold text-emerald-600 block mb-1">{item.week}</span>
-                  <h4 className="text-lg font-bold text-slate-900 tracking-tight">{item.phase}</h4>
-                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed pt-1.5">{item.focus}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* SUCCESS STORIES */}
         <section className="py-24 bg-white border-t border-slate-200">
@@ -440,6 +467,59 @@ export default function Fit90() {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="py-24 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-3 mb-16">
+              <span className="text-xs font-mono font-bold text-emerald-500 uppercase tracking-widest">Got Questions?</span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
+                FIT90 & Nutrition FAQs
+              </h2>
+              <p className="text-slate-500 font-medium text-sm sm:text-base">
+                Common questions about our 90-day transformation program and nutrition guidelines in Jaipur.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "How does the FIT90 program protect my joints during weight loss?",
+                  a: "Unlike generic gym programs, FIT90 integrates clinical physiotherapy screening. Before loading any exercise pattern, our therapists check your muscle activation to ensure your spine, knees, and shoulders are safe."
+                },
+                {
+                  q: "Will I get a customized diet plan?",
+                  a: "Yes, our clinical nutritionists design customized diet charts based on your daily lifestyle, regional preferences, and metabolic markers. We manage clinical conditions like diabetes, thyroid, and PCOS."
+                },
+                {
+                  q: "What support is included in the ₹4,999 package?",
+                  a: "The package includes your initial biomechanical movement screening, weekly diet chart adjustments, target workout schedules, progress check-ins, and direct support on WhatsApp."
+                },
+                {
+                  q: "Do I need to go to a specific gym?",
+                  a: "No, the FIT90 workout matrix can be tailored for home training with basic equipment or any local gym in Jaipur."
+                }
+              ].map((faq, idx) => (
+                <div key={idx} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    className="w-full px-6 py-5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <span className="text-emerald-500 text-xl font-mono shrink-0 ml-4">
+                      {openFaq === idx ? "−" : "+"}
+                    </span>
+                  </button>
+                  {openFaq === idx && (
+                    <div className="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/50">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
