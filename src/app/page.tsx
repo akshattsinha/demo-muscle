@@ -120,7 +120,7 @@ export default function Home() {
             "sameAs": [
               "https://facebook.com",
               "https://instagram.com",
-              "https://youtube.com"
+              "https://www.youtube.com/channel/UCV7Un8kRSXxfcHfhr0QQwjA"
             ],
             "department": [
               {

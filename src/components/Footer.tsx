@@ -51,7 +51,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/channel/UCV7Un8kRSXxfcHfhr0QQwjA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 bg-slate-200 hover:bg-emerald-500 hover:text-white text-slate-700 rounded-xl transition-all"
