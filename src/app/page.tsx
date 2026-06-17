@@ -30,6 +30,19 @@ import {
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
+const teamMembers = [
+  { name: "Daksha Tyagi", role: "BPT, MPT (Sports & MSK)", image: "/team/daksha.png" },
+  { name: "Ekta Chaudhary", role: "BPT, MPT (Sports & MSK)", image: "/team/ekta.png" },
+  { name: "Prachi Brewal", role: "BPT, MPT (Sports & MSK)", image: "/team/prachi.png" },
+  { name: "Samistha", role: "BPT, MPT (Sports & MSK)", image: "/team/samistha.png" },
+  { name: "Pritha S", role: "BPT, MPT (Sports & MSK)", image: "/team/pritha.png" },
+  { name: "Riddhi Raval", role: "BPT, MPT (Sports & MSK)", image: "/team/riddhi.png" },
+  { name: "Deepika Saini", role: "BPT, Certified Pulmonary Rehabilitation, Pain Management", image: "/team/deepika.png" },
+  { name: "Tanvi Chavan", role: "BPT, MPT (Sports & MSK)", image: "/team/tanvi.png" },
+  { name: "Alicia", role: "BPT, MPT (Sports & MSK)", image: "/team/alicia.png" },
+  { name: "Manasvi", role: "BPT, MPT (Sports & MSK)", image: "/team/manasvi.png" }
+];
+
 export default function Home() {
   const [selectedService, setSelectedService] = useState<typeof clinicConfig.services[0] | null>(null);
 
@@ -118,8 +131,7 @@ export default function Home() {
               }
             ],
             "sameAs": [
-              "https://facebook.com",
-              "https://instagram.com",
+              "https://www.instagram.com/musclealgorithm",
               "https://www.youtube.com/channel/UCV7Un8kRSXxfcHfhr0QQwjA"
             ],
             "department": [
@@ -230,7 +242,7 @@ export default function Home() {
               </div>
 
               {/* Right Column: Hero Visual Graphic */}
-              <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center">
+              <div className="order-1 lg:order-2 lg:col-span-5 flex flex-col items-center justify-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -247,12 +259,22 @@ export default function Home() {
                   {/* Core Doctor Image */}
                   <div className="relative w-full h-full flex items-end justify-center z-10 overflow-visible">
                     <img 
-                      src="/dr_akshat.png" 
-                      alt="Dr. Akshat Sinha" 
+                      src="/deepika_hero.png" 
+                      alt="Deepika Saini" 
                       className="h-[140%] w-auto object-contain drop-shadow-2xl select-none" 
                     />
                   </div>
                 </motion.div>
+
+                {/* Sub-caption below the image */}
+                <div className="text-center mt-8 z-20 relative bg-white/70 dark:bg-slate-950/70 backdrop-blur-md px-5 py-2.5 border border-slate-200 dark:border-slate-850 rounded-2xl shadow-sm">
+                  <h4 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-200">
+                    Deepika Saini (Chief Physiotherapist Consultant)
+                  </h4>
+                  <p className="text-[10px] sm:text-xs font-bold text-emerald-500 dark:text-emerald-400 mt-1 uppercase tracking-wider">
+                    BPT, Certified Pulmonary Rehabilitation, Pain Management
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -266,6 +288,55 @@ export default function Home() {
         {/* 3. SCROLL-DRIVEN POSTURE TRANSFORMATION */}
         <section className="border-t border-b border-slate-200 dark:border-slate-850">
           <PostureTransformation />
+        </section>
+
+        {/* 3.5. TEAM MEMBERS MARQUEE SECTION */}
+        <section className="py-20 bg-slate-50 dark:bg-slate-950 overflow-hidden border-b border-slate-200 dark:border-slate-850">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div className="text-center space-y-3">
+              <span className="text-xs font-mono font-bold text-emerald-500 dark:text-emerald-400 uppercase tracking-widest">Elite Clinical Care</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                Meet Our Expert Specialists
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 font-medium max-w-xl mx-auto text-sm sm:text-base">
+                Our team of certified physiotherapists, sports biomechanists, and rehab experts dedicated to your physical restoration.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative w-full overflow-hidden py-4">
+            {/* Gradient side overlays for smooth fade effect */}
+            <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-[#faf7f2] via-[#faf7f2]/70 to-transparent dark:from-[#1b1511] dark:via-[#1b1511]/70 z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#faf7f2] via-[#faf7f2]/70 to-transparent dark:from-[#1b1511] dark:via-[#1b1511]/70 z-10 pointer-events-none" />
+
+            {/* Marquee Row Container */}
+            <div className="animate-marquee flex flex-nowrap w-max gap-6 pr-6">
+              {[...teamMembers, ...teamMembers].map((member, index) => (
+                <div
+                  key={index}
+                  className="w-[150px] sm:w-[175px] h-[210px] sm:h-[240px] bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-850 rounded-3xl p-3 flex flex-col justify-between hover:scale-105 transition-all duration-300 shadow-md group select-none hover:shadow-lg dark:hover:shadow-black/30 flex-shrink-0"
+                >
+                  {/* Grayscale profile photo */}
+                  <div className="relative w-full h-[120px] sm:h-[140px] overflow-hidden rounded-2xl bg-[#f0e8dd] dark:bg-slate-800 flex items-end justify-center">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="h-[105%] w-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out pointer-events-none"
+                    />
+                  </div>
+                  {/* Dynamic clean label box at bottom */}
+                  <div className="bg-slate-50 dark:bg-slate-950 border border-slate-150/80 dark:border-slate-850 rounded-2xl p-2 sm:p-2.5 flex flex-col items-center justify-center text-center shadow-sm mt-2">
+                    <h4 className="text-xs sm:text-sm font-extrabold text-[#ff6b4a] dark:text-[#ff7a5c] tracking-tight leading-tight line-clamp-1">
+                      {member.name}
+                    </h4>
+                    <p className="text-[8px] sm:text-[9px] font-bold text-slate-500 dark:text-slate-400 mt-0.5 tracking-wider uppercase leading-none">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* 4. SERVICES SECTION */}

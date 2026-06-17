@@ -24,6 +24,17 @@
   --color-emerald-800: #66472b;
   --color-emerald-900: #4d331d;
   --color-emerald-950: #291a0e;
+
+  --animate-marquee: marquee 25s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -134,4 +145,16 @@ body {
 }
 .dark .glow-blur-2 {
   background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(11, 19, 41, 0) 70%);
+}
+
+/* Infinite scrolling marquee width and layout setup */
+.animate-marquee {
+  display: flex;
+  width: max-content;
+}
+
+@media (hover: hover) {
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
